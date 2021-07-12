@@ -1,0 +1,98 @@
+
+.background{
+    height: 100vh;
+    width: 100vw;
+    background-color: #c7bbb8;
+    text-align: center;
+    display: flex;
+
+}
+.container{
+    margin: auto;
+    height: 80%;
+    width: 60%;
+    background-color: #e6e5e4be;
+    box-shadow: 2px 2px 2px orangered;
+    position: relative;
+    border-radius: 3rem;
+}
+.formContainer{
+    position: absolute;
+    height: 100%;
+    width: 44%;
+    left: 3rem;
+    top: 5rem;
+    border-radius: 3rem;
+}
+
+.inputContainer{
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+    height: 3rem;
+    margin: 4rem;
+    position: relative;
+}
+
+.inputField{
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+
+}
+
+.inputText{
+    position: absolute;
+    top: 0.8rem;
+    left: 1rem;
+    font-size: 1.2rem;
+    color: grey;
+    pointer-events: none;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+
+    transition:all 0.4s;
+}
+
+.inputContainer input:focus{
+    border-bottom: 2px solid #b5651d;
+}
+
+.inputContainer input:focus + label{
+    top: -1.7rem;
+    left: 0;
+    color:  #b5651d;
+    font-weight: bold;
+}
+
+.btn{
+    border: none;
+    width: 25rem;
+    height: 3rem;
+    border-radius: 30px;
+    background-color: #9b4206;
+    color: white;
+}
+.imageContainer{
+    height: 100%;
+    position: absolute;
+    right: 0rem;
+    top: 0rem;
+
+    width: 25vw;
+    border-radius: 3rem;
+    overflow: hidden;
+    
+    
+}
+.imageContainer video{
+    object-fit: fill;
+    height: 100%;
+    width: 100%;
+    z-index: -10;
+}
+
+
+

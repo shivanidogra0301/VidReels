@@ -37,7 +37,7 @@ info present in firebase
             unsubscribe();
         }
     },[])
-//curUser is central user who is using the app currently
+//curUser is central user who is using the app currently, it contains object which includes email,uid
     const value = {
         curUser,
         login,

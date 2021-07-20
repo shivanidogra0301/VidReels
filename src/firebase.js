@@ -17,13 +17,18 @@ export const auth = firebase.auth();
 
 /* firestore is used to create collections in database, we will not export
  it directly for security reasons
+ firestore m hm srf data store krenge like posts video, profile image
+ firestore collection is database having objects like user, posts containing detatils
 */
 
 const firestore = firebase.firestore();
 export const database = {
     users : firestore.collection('users'),
+    posts:firestore.collection('posts'),
+    comments : firestore.collection('comments'),
     getCurrentTimeStamp : firebase.firestore.FieldValue.serverTimestamp
 }
 export const storage = firebase.storage();
+
 
 // export default firebase;

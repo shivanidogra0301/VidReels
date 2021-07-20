@@ -1,0 +1,9 @@
+.btn{
+    background-color: purple;
+    color: white;
+    border: none;
+    height: 4rem;
+    width: 10rem;
+    margin-top: 2rem;
+    border-radius: 10px;
+}

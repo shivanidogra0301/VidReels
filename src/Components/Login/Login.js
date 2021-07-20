@@ -1,49 +1,75 @@
-import React,{useState,useEffect,useContext} from 'react'
+import React,{useState,useContext,useEffect} from 'react'
 import { AuthContext } from '../../Context/AuthProvider'
+import { useHistory } from 'react-router-dom'
 import style from './Login.module.css'
-import src from '../../images/final_60eaeca1503123005bf163b5_958191.mp4'
+import src from '../../videos/video.mp4'
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 const Login = () => {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [loading,setLoading] = useState(false);
     const [error,setError] = useState('')
-    const {login} = useContext(AuthContext);
+    const {login,curUser} = useContext(AuthContext);
+    const history = useHistory();
     const handlesubmit = async(e) =>{
+        //form by default reload page
         e.preventDefault();
 
         try{
             setLoading(true);
-
-            let res = await login(email,password)
-            let uid = res.user.uid;
-            console.log(uid);
+            //user get logged in
+            await login(email,password)
+            
             setLoading(false)
+            //when user get logged in riderect it to home page
+            history.push('/')
+            // console.log(uid);
         }
         catch(err){
             setError(err)
-            console.log(err);
+            console.log(error);
             setTimeout(()=>setError(''),2000);
             setLoading(false);
         }
     }
+    useEffect(()=>{
+        if(curUser){
+            history.push('/')
+        }
+    },[])
+
+    let labelClassesEmail = [style.inputText];
+    if(email.length > 0){
+        labelClassesEmail.push(style.focusText);
+    }
+
+    let labelClassesPass = [style.inputText];
+    if(password.length > 0){
+        labelClassesPass.push(style.focusText);
+    }
+
+
+
+    
+
+    
     return (
+        <>
+        { curUser ?<h1>Loading</h1>:
         <div className={style.background}>
             <div className={style.container}>
-                <div className={style.imageContainer}>
-                    <video autoPlay muted loop>
-                        <source src = {src}/>
-                    </video>
-                </div>
+                
                 <form onSubmit={handlesubmit} className={style.formContainer}>
                     <div className={style.inputContainer}>
                         <input className={style.inputField} type = 'email' value={email} onChange={(e)=>{setEmail(e.target.value)}}></input>
-                        <label className={style.inputText} for="style.inputContainer">Email</label>
+                        <label className={labelClassesEmail.join(' ')} htmlFor="style.inputContainer">Email</label>
 
                     </div>
 
                     <div className={style.inputContainer}>
                         <input className={style.inputField} type = 'password' value={password} onChange={(e)=>{setPassword(e.target.value)}}></input>
-                        <label className={style.inputText} htmlFor=''>Password</label>
+                        <label className={labelClassesPass.join(' ')} htmlFor=''>Password</label>
 
                     </div>
                     <div className={style.btnConatiner}>
@@ -51,11 +77,19 @@ const Login = () => {
                     </div>
                     
                 </form>
+                <div className={style.videoContainer}>
+                    <video autoPlay muted loop>
+                        <source src = {src}/>
+                    </video>
+                </div>
                 
                 
             </div>
             
         </div>
+
+         } 
+        </>
         
     )
 }

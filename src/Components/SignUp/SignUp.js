@@ -1,6 +1,11 @@
 import React,{useState,useContext,useEffect} from 'react'
 import {AuthContext} from '../../Context/AuthProvider'
 import {storage,database} from '../../firebase'
+import style from './SignUp.module.css'
+import { useHistory } from 'react-router-dom'
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+
 function SignUp() {
     const[email,setEmail] = useState('');
     const[password,setPassword] = useState('');
@@ -8,7 +13,8 @@ function SignUp() {
     const[error,setError] = useState('');
     const[loading,setLoading] = useState('');
     const[profilepic,setpic] = useState(null);
-    const {signup} = useContext(AuthContext);
+    const {signup,curUser} = useContext(AuthContext);
+    const history = useHistory();
     const handleSignup = async (e)=>{
         e.preventDefault();
         try{
@@ -52,6 +58,7 @@ function SignUp() {
         }
         setLoading(false);
         console.log("User has signed up")
+        history.push('/')
     }
     catch(err){
         setError(err)
@@ -60,34 +67,75 @@ function SignUp() {
     }
         
     }
+//if used has signed in, then it should no redirect it to signup page
+    useEffect(()=>{
+        if(curUser)
+        {
+          history.push('/')
+        }
+      },[])
     const handleprofilepic = (e)=>{
         let profilepic = e.target.files[0];
         if(profilepic != null){
             setpic(profilepic)
         }
+        console.log(profilepic)
     }
+
+    let labelClassesEmail = [style.inputText];
+    if(email.length > 0){
+        labelClassesEmail.push(style.focusText);
+    }
+
+    let labelClassesPass = [style.inputText];
+    if(password.length > 0){
+        labelClassesPass.push(style.focusText);
+    }
+    let labelClassesname = [style.inputText];
+    if(name.length > 0){
+        labelClassesname.push(style.focusText);
+    }
+
     return (
-        <div>
-            <form onSubmit={handleSignup}>
-                <div>
-                    <label htmlFor=''>UserName</label>
-                    <input type='text' value={name} onChange={(e)=>setName(e.target.value)}/>
+        <>{
+            (curUser)?<CircularProgress/>:
+        <div className={style.background}>
+            <form onSubmit={handleSignup} className={style.container}>
+                <div className={style.formContainer}>
+                    <div className={style.inputContainer}>
+                        <input className={style.inputField} type='text' value={name} onChange={(e)=>setName(e.target.value)}/>
+                        <label className={labelClassesname.join(' ')} htmlFor=''>UserName</label>
+
+                    </div >
+                    <div className={style.inputContainer}>
+                        <input className={style.inputField} type='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                        <label className={labelClassesEmail.join(' ')} htmlFor=''>Email</label>
+
+                    </div>
+                    <div className={style.inputContainer}>
+                        <input className={style.inputField} type='password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
+                        <label className={labelClassesPass.join(' ')} htmlFor=''>Password</label>
+
+                    </div>
+                    <div className={style.inputContainer}>
+                        <div className={style.fileUploadContainer}>
+                            <span className={style.fileName}>Profile Image</span>
+                            <label className={style.choosebtn} htmlFor="choose">Upload</label>
+                            <input className={style.hidden} id= "choose"  type='file' accept='image/*' onChange={handleprofilepic}/>
+                            {(profilepic != null)?<span>{profilepic.name}</span>:<p></p>}
+                        </div>
+                       
+                    </div>
+                    <div className={style.inputContainer}>
+                    <button className={style.btn}  type='submit' disabled={loading}>SignUp</button>
+
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor=''>Email</label>
-                    <input type='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor=''>Password</label>
-                    <input type='password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor=''>Profile image</label>
-                    <input type='file' accept='image/*' onChange={handleprofilepic}/>
-                </div>
-                <button type='submit' disabled={loading}>SignUp</button>
+                
             </form>
         </div>
+        }
+        </>
     )
 }
 

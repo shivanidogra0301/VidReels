@@ -1,0 +1,101 @@
+.MenuContainer{
+    width: 22vw;
+    margin: 2rem;
+    margin-left: 4rem;
+    border-radius: 22px;
+    background-color: #fff;
+    box-shadow: 0 0 2px #d1e0fc ;
+}
+
+.Logo{
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    color: #b36af8;
+   
+}
+
+.icon{
+    height: 5rem;
+    width: 5rem;
+    min-width: 4rem;
+    fill: #b36af8;
+    margin-right: 2.5rem;
+    margin-left: 2.5rem;
+
+    border-radius: 20px;
+    background-color: #f1f6fe;
+    box-shadow: -5px 5px 7px #b1cbfa;
+    
+}
+.MenuItemsContainer{
+    width: 100%;
+    height: 30vh;
+}
+
+.MenuHeading{
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1.5rem;
+}
+
+.menuItems{
+    padding-left: 2.5rem;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    color: #91b6f8 ;
+    font-size: 1.5rem;
+    height: 5vh;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.selected{
+    border-top: 0.8px solid #9dbef89d;
+    border-radius: 10px;
+    box-shadow: 0 2px 3px #91b6f8 ;
+}
+
+.ProfileContainer{
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 10px;
+    padding-top: 3rem;
+
+}
+.ProfilePic{
+    height: 17vh;
+    width: 8vw;
+    border-radius: 50%;
+    overflow: hidden;
+    background-position: cover;
+    margin-bottom: 20px;
+}
+
+.ProfilePic img{
+    height: 100%;
+    width: 100%;
+}
+
+.Editbutton{
+    height: 4rem;
+    width: 14rem;
+    background-color: #b36af8;
+    padding: 1rem;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 10px;
+}
+
+input{
+    display: none;
+}
+
+

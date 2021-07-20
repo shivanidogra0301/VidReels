@@ -1,6 +1,7 @@
 *{
     margin: 0;
     box-sizing: border-box;
+    padding: 0;
 }
 html{
     font-size: 62.5%;
@@ -8,7 +9,7 @@ html{
 .background{
     height: 100vh;
     width: 100vw;
-    background-color: #d4cdcc;
+    background-color: #c7bbb8;
     text-align: center;
     display: flex;
 
@@ -16,28 +17,29 @@ html{
 .container{
     margin: auto;
     height: 80%;
-    width: 60%;
+    width: 40%;
     background-color: #e6e5e4be;
     box-shadow: 2px 2px 2px orangered;
     position: relative;
     border-radius: 3rem;
     display: flex;
-    
-}
-.formContainer{
-    height: 100%;
-    width: 60%;
-    border-radius: 3rem;
-    padding: 2rem;
-    display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: center;
+
 }
+.formContainer{
+    height: 60%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
 
 .inputContainer{
     width: 60%;
-    margin-top: 3rem;
     height: 3rem;
     transform: translate(30%,-50%);
 }
@@ -84,46 +86,46 @@ html{
 
 .btn{
     border: none;
-    width: 60%;
+    width: 80%;
     height: 3rem;
     border-radius: 30px;
     background-color: #9b4206;
     color: white;
     font-size: 1.2rem;
-
-    transform: translate(-3%,-30%);
     margin-top: 2rem;
 }
-.videoContainer{
-    height: 100%;
-    width: 40%;
-    border-radius: 3rem;
-    overflow: hidden;
-    
+.fileUploadContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content:left;
+    font-size: 1.2rem;
+
+}
+.choosebtn{
+    display: inline-block;
+    background-color: orange;
+    height: 3rem;
+    width: 12rem;
+    border-radius: 4rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+    justify-content: center;
+    margin-left: 3rem;
     
 }
-.videoContainer video{
-    object-fit: fill;
-    height: 100%;
-    width: 100%;
-    z-index: -10;
+
+.hidden{
+ display: none;
 }
 
-@media only screen and (max-width: 819px) {
-    [class*="videoContainer"] {
-        display: none;
-      }
-      [class*="formContainer"] {
-        width: 100%;
-      }
+.fileName{
+    color:  #b5651d;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transform: translateY(30%);
 
-  }
+}
 
-  @media only screen and (max-width: 510px) {
-      html{
-          font-size: 50%;
-      }
-  }
-
-
-
+    

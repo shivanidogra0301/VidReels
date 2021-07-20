@@ -1,0 +1,130 @@
+.commentIcon{
+    height: 2rem;
+    width: 3rem;
+    fill: lightblue;
+}
+.commentIcon{
+    cursor: pointer;
+}
+
+.ModalBackground{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.301);
+    z-index: 3;
+    text-align: center;
+    position: fixed;
+    top: 0rem;
+    left: 0;
+
+}
+
+.Modal{
+    height: 70vh;
+    width: 60vw;
+    background-color: gray;
+    display: flex;
+    margin: auto;
+    margin-top: 15vh;
+
+
+}
+
+
+.VideoContainer{
+    height: 70vh;
+    width: 40% ;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.VideoContainer video{
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+}
+
+
+
+
+.commentSection{
+    height: 100%;
+    width: 60%;
+    background-color: aqua;
+    overflow: hidden;
+}
+
+.authorDataContainer{
+    border-bottom: 1px solid gray;
+    height: 18%;
+    display: flex;
+    align-items: center;
+   
+
+}
+
+.authorPic{
+    margin-left: 3rem;
+    min-width: 50px;
+    height: 60%;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.authorPic img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+
+}
+.authorName{
+    font-size: 2rem;
+    font-weight: bold;
+    margin-left: 2rem;
+}
+
+.commentsContainer{
+    height: 70% ;
+    width: 100%;
+    overflow-Y: scroll;
+}
+
+.comment{
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.commentUserPic{
+    overflow: hidden;
+    margin: 1rem;
+    min-width: 3px;
+    height: 4rem;
+    width: 3rem;
+    border-radius: 50%;
+}
+
+.commentUserPic img{
+    object-fit: fill;
+    height: 100%;
+    width: 100%;
+}
+
+.textContainer{
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    text-align: left;
+    font-size: 1rem;
+    justify-content: space-between;
+}
+.CommentAuthoreName{
+    font-weight: bold;
+}
+
+.CommentText{
+    width: 100%;
+    overflow-wrap: break-word;
+}

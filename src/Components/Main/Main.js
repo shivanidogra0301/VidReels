@@ -3,7 +3,9 @@ import React,{useContext,useState,useEffect} from 'react'
 import Home from './Home/Home'
 import { database } from '../../firebase'
 import { AuthContext } from '../../Context/AuthProvider'
+import Suggestion from './Suggestions/Suggestion'
 import Menu from './Menu/Menu'
+import { CircularProgress } from '@material-ui/core'
 const Main = () => {
     const {curUser} =useContext(AuthContext);
     const [userData,setUserData] = useState(null);
@@ -14,15 +16,25 @@ const Main = () => {
     the data of curUser change, like number of posts, profile*/
     useEffect(()=>{
         const unsub = database.users.doc(curUser.uid).onSnapshot((doc)=>{
-            // console.log(doc.data());
+            console.log("home renders");
             setUserData(doc.data())
         })
     },[curUser])
+
+    
     return (
-        <div className={style.Main}>
-           <Menu userData={userData} /> 
-           {/* <Home userData={userData}/> */}
-        </div>
+        <>
+        {   curUser?
+                <div className={style.Main}>
+                    <Menu userData={userData} /> 
+                    <Home userData={userData}/>
+                    <Suggestion/>
+                </div>:
+                <CircularProgress style={{position:'fixed',top:'0',left:'50vh'}}/>
+
+        }
+        </>
+        
     )
 }
 

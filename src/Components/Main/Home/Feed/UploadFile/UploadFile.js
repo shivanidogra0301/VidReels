@@ -6,8 +6,16 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import {v4 as uuidv4} from 'uuid';
 import {storage,database} from '../../../../../firebase'
 import style from './UploadFile.module.css'
+import { Translate } from '@material-ui/icons';
 const useStyles = makeStyles((theme) => ({
+    root: {
+        width: '100%',
+        backgroundColor:'#f5ecfe',
+        borderRadius : '20px',
+        height : '1.2px',
+        marginTop : '0.3rem'
         
+      }
   }));
 
   //upload video to the firebase
@@ -16,6 +24,7 @@ function UploadFile(props) {
     const[loading,setLoading] = useState(false);
     const[error,setError] = useState(null);
     const types =['video/mp4','video/webm','video/ogg'];
+    
     const onChange=(e)=>{
         let file = e?.target?.files[0];
         //file is not present
@@ -47,6 +56,8 @@ function UploadFile(props) {
         uploadTask.on('state_changed',fn1,fn2,fn3);
         //file is uploading
         function fn1(snapshot){
+            setLoading(true);
+
             var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             console.log('Upload is ' + progress + '% done');         
         }
@@ -60,7 +71,6 @@ function UploadFile(props) {
         }
         //when the video is successfully uploaded to firestore
         async function fn3(){
-            setLoading(true);
             //create collection of posts means object
             //url contains the url to the post that uploaded to firestore
             uploadTask.snapshot.ref.getDownloadURL().then(url=>{
@@ -106,22 +116,23 @@ function UploadFile(props) {
     return (
         <>
         {
-            error!=null? <Alert severity="error">{error}</Alert>:<>
-            <input 
-            color='primary'
-            type='file'
-            onChange={onChange}
-            id='icon-button-file'
-            style={{display:'none'}}
-            />
+            error!=null? <Alert severity="error">{error}</Alert>:<div className={style.postsTop}>
+            <h3 className={style.text}>Feed</h3>
+            <input type='file' onChange={onChange}  id='icon-button-file' style={{display:'none'}}/>
             <label htmlFor='icon-button-file'>
-            <button className={style.btn} disabled={loading} variant="outlined" component='span' >
+                <div className={style.btn}  disabled={loading}>
                 Upload
-            </button>
+                {   loading?
+                    <LinearProgress className={classes.root}   />
+                    :
+                    <></>
+                }
+
+
+                </div>
 
             </label>
-            {loading?<LinearProgress color='secondary' className={classes.button} style={{marginTop:'6%'}} />:<></>}
-            </>
+            </div>
 
         }
         </>

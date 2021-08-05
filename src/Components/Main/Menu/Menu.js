@@ -1,11 +1,15 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState,useContext} from 'react'
 import style from './Menu.module.css'
 import HomeIcon from '@material-ui/icons/Home';
 import { makeStyles } from '@material-ui/core/styles';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import MessageIcon from '@material-ui/icons/Message';
 import { database,storage } from '../../../firebase';
-import {  ref, deleteObject } from "firebase/storage";
+import {AuthContext} from '../../../Context/AuthProvider';
+import { useHistory } from 'react-router-dom';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { PostAddOutlined } from '@material-ui/icons';
+
 const useStyles = makeStyles((theme) => ({
         icons : {
             fontSize: '1.5rem',
@@ -15,47 +19,55 @@ const useStyles = makeStyles((theme) => ({
         
 }));
 const Menu = ({userData}) => {
+    const{logout,curUser} = useContext(AuthContext)
     const[profilepic,setprofile] = useState(null)
     const[loading,setloading] = useState(false)
     const classes = useStyles();
-    const handleprofilepic = (e)=>{
+    const history = useHistory();
+    const logoutHandler = async()=>{
+        if(curUser){
+            await logout();
+            history.push('/login')
+        }
+    }
+    const handleprofilepic = async(e)=>{
+        console.log(userData.profileUrl);
         let pic = e.target.files[0];
+        console.log(pic)
+        // const blob = await pic.blob();
         setprofile(pic);
-        var storageRef = storage.ref();
-        const uploadTaskListener = storage.ref(`/users/${userData.userId}/profileImage`).put(profilepic);
+        // var storageRef = storage.ref();
+        const uploadTaskListener = storage.ref(`/users/${userData.userId}/profileImage`).put(pic);
 
         // const desertRef = storageRef.child(userData.profileUrl);
         // console.log(desertRef)
 
         uploadTaskListener.on('state_changed',fn1,fn2,fn3)
         function fn1(snapshot){
+            // console.log(snapshot)
             var progress = (snapshot.bytesTransferred/ snapshot.totalBytes) * 100;
             console.log('Upload is ' + progress + '% done');   
             //used to show the progress that this percent is
         }
         function fn2(error){
-            console.log(error)
+            console.log("error" + error)
         }
         async function fn3(){
             //download the url
             setloading(true);
-
-            let downloadUrl = await uploadTaskListener.snapshot.ref.getDownloadURL();
             
+            let downloadUrl = await uploadTaskListener.snapshot.ref.getDownloadURL();
+            console.log(downloadUrl);
 
             //to store information in firestore database
-            database.users.doc(userData.userId).update({
+            await database.users.doc(userData.userId).update({
                 profileUrl:downloadUrl
             })
+
+            await database.posts.doc()
             setloading(false);
         }
 
-        
-
-        
-
-        
-        
     }
     
     
@@ -88,20 +100,24 @@ const Menu = ({userData}) => {
 
             </div>
             <div className={style.ProfileContainer}>
-                { 
-                    loading == true?<h1>Loading</h1>:
+                
                     <div className={style.ProfilePic}>
+                        { loading?<CircularProgress style={{position:'absolute',top:'6rem',left:'10rem'}}/>:
+
                         <img src = {userData?.profileUrl}/>
+                        }
                     </div>
 
-                }
+                
+                <h2 style={{marginBottom:'10px'}}>{userData?.username}</h2>
                 
                 <label className={style.choosebtn} htmlFor="choose">
-                    <div className={style.Editbutton}>
+                    <div className={style.button}>
                         Edit Profile
                     </div>
                 </label>
                 <input className={style.hidden} id= "choose"  type='file' accept='image/*' onChange={handleprofilepic}/>
+                <div onClick={logoutHandler} className={style.button +" "+ style.logout}> Logout</div>
                 
             </div>
 

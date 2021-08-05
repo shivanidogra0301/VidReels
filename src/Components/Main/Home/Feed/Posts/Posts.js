@@ -68,7 +68,7 @@ snapshot on array containing object of all posts*/
     return (
         <>
         {
-            posts === null ? <CircularProgress/>:
+            posts === null ? <></>:
             <div className={style.videosContainer}>
                 {
                     posts.map((post) => (
@@ -95,7 +95,6 @@ snapshot on array containing object of all posts*/
                 }
             </div>
         }
-            
         </>
     )
 }

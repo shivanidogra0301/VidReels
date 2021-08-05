@@ -1,0 +1,56 @@
+.suggestionContainer{
+    width: 25vw;
+    margin-left: 5rem;
+    /* border-left: 1px solid #91b6f8 ; */
+    box-shadow: -2px 0 0.2px #d0ddf5 ;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    padding-left: 4rem;
+
+}
+
+.SuggestionHeader{
+    display: flex;
+    width: 100%;
+    justify-content :space-between;
+    font-size: 1rem;
+    
+}
+
+.highlight{
+    color : #b36af8;
+}
+
+.profileContainer{
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+}
+
+.imageContainer{
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+}
+
+.items{
+    margin-right: 1.5rem;
+}
+
+.followbtn{
+    height: 3rem;
+    border-radius: 8px;
+    width: 8rem;
+    padding: 0.5rem;
+    background-color: #b36af8 ;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 6rem;
+    font-size: 1.2rem;
+}

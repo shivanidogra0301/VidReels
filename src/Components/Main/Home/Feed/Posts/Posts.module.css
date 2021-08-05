@@ -6,7 +6,7 @@
     align-items: center;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
-    margin-top: 40px;
+    
 }
 
 .videosContainer::-webkit-scrollbar {

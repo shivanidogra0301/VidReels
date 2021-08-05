@@ -1,5 +1,5 @@
 .MenuContainer{
-    width: 22vw;
+    width: 20vw;
     margin: 2rem;
     margin-left: 4rem;
     border-radius: 22px;
@@ -52,6 +52,10 @@
     margin-bottom: 6px;
 }
 
+.menuItems:hover{
+    cursor: pointer;
+}
+
 .selected{
     border-top: 0.8px solid #9dbef89d;
     border-radius: 10px;
@@ -59,7 +63,6 @@
 }
 
 .ProfileContainer{
-    height: 30vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -67,15 +70,18 @@
     justify-content: space-evenly;
     margin-top: 10px;
     padding-top: 3rem;
+    position: relative;
+
 
 }
 .ProfilePic{
-    height: 17vh;
+    height: 16vh;
     width: 8vw;
     border-radius: 50%;
     overflow: hidden;
     background-position: cover;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
+
 }
 
 .ProfilePic img{
@@ -83,7 +89,7 @@
     width: 100%;
 }
 
-.Editbutton{
+.button{
     height: 4rem;
     width: 14rem;
     background-color: #b36af8;
@@ -92,10 +98,19 @@
     color: white;
     font-size: 1.5rem;
     border-radius: 10px;
+    margin-bottom: 1rem;
 }
 
 input{
     display: none;
+}
+
+.logout{
+    background-color: #2a044f;
+}
+
+.button:hover{
+    cursor: pointer;
 }
 
 

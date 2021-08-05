@@ -7,19 +7,19 @@ import Posts from './Posts/Posts'
 function Feed(props) {
     
     return (
-        <>
-        { props.userData==null ? <CircularProgress />:<>
+        <div>
         
-       
         <div className='feed-container'>
                 <UploadFile userData={props.userData}/>
+                { props.userData==null ? <CircularProgress style={{position:'absolute',top:'50%',left:'45%'}} />:
+        
                 <Posts userData={props.userData}/>
-
+    }
         </div>
 
-        </>
-        }
-        </>
+        
+        
+        </div>
     )
 }
 

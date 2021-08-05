@@ -18,11 +18,20 @@
     left: 0;
 
 }
-
+.tempModal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: transparent;
+    z-index: -1;
+}
 .Modal{
+    z-index: 10;
     height: 70vh;
     width: 60vw;
-    background-color: gray;
+    background-color: #f1f6fe;
     display: flex;
     margin: auto;
     margin-top: 15vh;
@@ -50,24 +59,22 @@
 .commentSection{
     height: 100%;
     width: 60%;
-    background-color: aqua;
+    background-color: #f1f6fe;
     overflow: hidden;
 }
 
 .authorDataContainer{
-    border-bottom: 1px solid gray;
+    box-shadow: 0px 2px 0.2px #d0ddf5 ;
     height: 18%;
     display: flex;
     align-items: center;
-   
-
 }
 
 .authorPic{
     margin-left: 3rem;
     min-width: 50px;
     height: 60%;
-    width: 30px;
+    width: 50px;
     display: flex;
     align-items: center;
     border-radius: 50%;
@@ -93,23 +100,25 @@
 
 .comment{
     display: flex;
-    align-items: center;
     margin-top: 1rem;
+    
 }
 
 .commentUserPic{
     overflow: hidden;
     margin: 1rem;
     min-width: 3px;
-    height: 4rem;
-    width: 3rem;
+    height: 100%;
+
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .commentUserPic img{
-    object-fit: fill;
-    height: 100%;
-    width: 100%;
+    height: 3rem;
+    width: 3rem;
 }
 
 .textContainer{
@@ -118,7 +127,7 @@
     flex-direction: column;
     text-align: left;
     font-size: 1rem;
-    justify-content: space-between;
+    padding: 1rem;
 }
 .CommentAuthoreName{
     font-weight: bold;
@@ -128,3 +137,34 @@
     width: 100%;
     overflow-wrap: break-word;
 }
+
+.commentInput{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    padding: 1rem;
+    padding-right: 7rem;
+}
+
+.commentInputContainer{
+    height: 12%;
+    width: 100%;
+    background-color: white;
+    position: relative;
+}
+
+.commentBtn{
+    position: absolute;
+    z-index: 4;
+    top: 1rem;
+    right: 0.5rem;
+    outline: none;
+    background-color: #b36af8;
+    color: white;
+    height: 3rem;
+    width: 5rem;
+    border: none;
+    border-radius: 10px;
+}
+

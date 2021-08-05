@@ -4,9 +4,10 @@ import {storage,database} from '../../firebase'
 import style from './SignUp.module.css'
 import { useHistory } from 'react-router-dom'
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import { Link } from 'react-router-dom'
 
 function SignUp() {
+
     const[email,setEmail] = useState('');
     const[password,setPassword] = useState('');
     const[name,setName] = useState('');
@@ -15,6 +16,8 @@ function SignUp() {
     const[profilepic,setpic] = useState(null);
     const {signup,curUser} = useContext(AuthContext);
     const history = useHistory();
+
+   
     const handleSignup = async (e)=>{
         e.preventDefault();
         try{
@@ -103,17 +106,17 @@ function SignUp() {
             <form onSubmit={handleSignup} className={style.container}>
                 <div className={style.formContainer}>
                     <div className={style.inputContainer}>
-                        <input className={style.inputField} type='text' value={name} onChange={(e)=>setName(e.target.value)}/>
+                        <input className={style.inputField} type='text' value={name} onChange={(e)=>setName(e.target.value)} required/>
                         <label className={labelClassesname.join(' ')} htmlFor=''>UserName</label>
 
                     </div >
                     <div className={style.inputContainer}>
-                        <input className={style.inputField} type='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                        <input className={style.inputField} type='email' value={email} onChange={(e)=>setEmail(e.target.value)} required/>
                         <label className={labelClassesEmail.join(' ')} htmlFor=''>Email</label>
 
                     </div>
                     <div className={style.inputContainer}>
-                        <input className={style.inputField} type='password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
+                        <input className={style.inputField} type='password' value={password} onChange={(e)=>setPassword(e.target.value)} required/>
                         <label className={labelClassesPass.join(' ')} htmlFor=''>Password</label>
 
                     </div>
@@ -121,7 +124,7 @@ function SignUp() {
                         <div className={style.fileUploadContainer}>
                             <span className={style.fileName}>Profile Image</span>
                             <label className={style.choosebtn} htmlFor="choose">Upload</label>
-                            <input className={style.hidden} id= "choose"  type='file' accept='image/*' onChange={handleprofilepic}/>
+                            <input className={style.hidden} id= "choose"  type='file' accept='image/*' onChange={handleprofilepic} required/>
                             {(profilepic != null)?<span>{profilepic.name}</span>:<p></p>}
                         </div>
                        
@@ -131,6 +134,8 @@ function SignUp() {
 
                     </div>
                 </div>
+
+                <div style={{fontSize:'1.2rem'}}>Have an account?<Link to='/login'> Log in</Link></div>
                 
             </form>
         </div>

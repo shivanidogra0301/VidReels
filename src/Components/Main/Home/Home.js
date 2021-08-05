@@ -6,7 +6,6 @@ const Home = ({userData}) => {
     return (
         <div className={style.Home}>
             
-                {/* <Header userData ={userData}/> */}
                 <Feed userData = {userData}/>
         </div>
     )

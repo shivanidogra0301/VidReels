@@ -10,7 +10,7 @@ const useStyles = makeStyles({
         cursor:'pointer'
     },
     unlike:{
-        color:'black',
+        color:'lightblue',
         cursor:'pointer'
     }
     ,

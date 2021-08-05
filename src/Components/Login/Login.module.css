@@ -5,10 +5,36 @@
 html{
     font-size: 62.5%;
 }
+
+
+.Logo{
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    color: #b36af8;
+    justify-content: center;
+   
+}
+
+.icon{
+    height: 5rem;
+    width: 5rem;
+    min-width: 4rem;
+    fill: #b36af8;
+    margin-right: 2.5rem;
+    margin-left: 2.5rem;
+
+    border-radius: 20px;
+    background-color: #f1f6fe;
+    box-shadow: -5px 5px 7px #b1cbfa;
+    
+}
 .background{
     height: 100vh;
     width: 100vw;
-    background-color: #d4cdcc;
+    background-color:  #f1f6fe;
     text-align: center;
     display: flex;
 
@@ -17,8 +43,9 @@ html{
     margin: auto;
     height: 80%;
     width: 60%;
-    background-color: #e6e5e4be;
-    box-shadow: 2px 2px 2px orangered;
+    background-color: white;
+    box-shadow: 2px 2px 2px #b1cbfa;
+    border: 2px solid #b1cbfa;
     position: relative;
     border-radius: 3rem;
     display: flex;
@@ -32,7 +59,7 @@ html{
     display: flex;
     flex-direction: column;
     text-align: center;
-    justify-content: center;
+    
 }
 
 .inputContainer{
@@ -51,6 +78,8 @@ html{
     border: none;
     position: relative;
     padding: 1rem;
+    border-bottom : 2px solid #c1d6fb;
+
 }
 
 .inputText{
@@ -66,19 +95,19 @@ html{
 }
 
 .inputContainer input:focus{
-    border-bottom: 2px solid #b5651d;
+    border-bottom: 2px solid #b36af8;
 }
 .inputContainer input:focus + label{
     top: -1.7rem;
     left: 0;
-    color:  #b5651d;
+    color:  #b36af8;
     font-weight: bold;
 }
 
 .focusText{
     top: -1.7rem;
     left: 0;
-    color:  #b5651d;
+    color:  #b36af8;
     font-weight: bold;
 }
 
@@ -87,7 +116,7 @@ html{
     width: 60%;
     height: 3rem;
     border-radius: 30px;
-    background-color: #9b4206;
+    background-color: #b36af8;
     color: white;
     font-size: 1.2rem;
 
@@ -124,6 +153,5 @@ html{
           font-size: 50%;
       }
   }
-
 
 

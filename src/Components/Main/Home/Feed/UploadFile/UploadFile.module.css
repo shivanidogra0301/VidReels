@@ -1,9 +1,28 @@
 .btn{
-    background-color: purple;
+    background-color: #b36af8;
     color: white;
     border: none;
     height: 4rem;
     width: 10rem;
-    margin-top: 2rem;
+    margin: 2rem;
     border-radius: 10px;
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 1rem;
+}
+.btn:hover{
+    cursor: pointer;
+}
+
+.text{
+    margin: 2rem;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.postsTop{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import {database} from '../../../../../../firebase'
+import style from './Comments.module.css'
 const AddComment = ({userData=null , postData=null}) => {
     const [comment,setComment] = useState('');
     const HandlecommentChange = (e) =>{
@@ -30,9 +31,12 @@ const AddComment = ({userData=null , postData=null}) => {
 
     }
     return (
-        <div>
-            <textarea value={comment} onChange={HandlecommentChange}/>
-            <button onClick={handleCommentSubmit} disabled={comment === ''? true:false}>Post</button>
+        <div className={style.commentInputContainer}>
+            <textarea value={comment} className={style.commentInput} onChange={HandlecommentChange}>
+
+            </textarea>
+            <button onClick={handleCommentSubmit} className={style.commentBtn} disabled={comment === ''? true:false}>Post</button>
+
         </div>
     )
 }

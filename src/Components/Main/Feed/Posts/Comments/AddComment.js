@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import {database} from '../../../../../../firebase'
+import {database} from '../../../../../firebase'
 import style from './Comments.module.css'
 const AddComment = ({userData=null , postData=null}) => {
     const [comment,setComment] = useState('');
@@ -14,7 +14,8 @@ const AddComment = ({userData=null , postData=null}) => {
             text : comment,
             uName : userData.username,
             uUrl  : userData.profileUrl,
-            createdAt:database.getCurrentTimeStamp()
+            createdAt:database.getCurrentTimeStamp(),
+            
         }
 
 //add this object to comment database, firebase will return a unique id for that comment , we will add that id
@@ -22,6 +23,10 @@ const AddComment = ({userData=null , postData=null}) => {
         database.comments.add(obj).then(docref =>{
             database.posts.doc(postData.postId).update({
                 comments:[...postData.comments,docref.id]
+            })
+
+            database.users.doc(userData.userId).update({
+                comments: [...userData.comments,docref.id]
             })
         })
         .catch(e =>{

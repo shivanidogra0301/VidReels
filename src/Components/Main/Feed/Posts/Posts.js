@@ -1,10 +1,8 @@
 import React,{useState,useEffect} from 'react'
-import CircularProgress from '@material-ui/core/CircularProgress';
 import style from './Posts.module.css'
-import {database} from '../../../../../firebase'
+import {database} from '../../../../firebase'
 import Video from  './Video/Video'
 import Like from './Like/Like'
-import AddComment from './Comments/AddComment'
 import Comments from './Comments/Comments';
 const Posts= (props) => {
     const[posts,setPosts] = useState(null);

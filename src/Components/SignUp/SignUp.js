@@ -56,7 +56,8 @@ function SignUp() {
                 username:name,
                 createdAt:database.getCurrentTimeStamp(),
                 profileUrl:downloadUrl,
-                postIds:[]
+                postIds:[],
+                comments:[]
             })
         }
         setLoading(false);
@@ -104,6 +105,17 @@ function SignUp() {
             (curUser)?<CircularProgress/>:
         <div className={style.background}>
             <form onSubmit={handleSignup} className={style.container}>
+            <div className={style.Logo}>
+                        <svg className={style.icon} viewBox="0 0 32 32">
+        
+                            <path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM16 3.55c1.886 0 3.416 1.53 3.416 3.416s-1.53 3.416-3.416 3.416c-1.886 0-3.416-1.53-3.416-3.416s1.53-3.416 3.416-3.416zM3.612 12.96c0-1.886 1.53-3.416 3.416-3.416s3.416 1.53 3.416 3.416c0 1.886-1.53 3.416-3.416 3.416s-3.416-1.53-3.416-3.416zM10.576 26.416c-1.886 0-3.416-1.53-3.416-3.416s1.53-3.416 3.416-3.416c1.886 0 3.416 1.53 3.416 3.416s-1.53 3.416-3.416 3.416zM16 18c-1.104 0-2-0.896-2-2s0.896-2 2-2c1.104 0 2 0.896 2 2s-0.896 2-2 2zM21.424 26.436c-1.886 0-3.416-1.53-3.416-3.416s1.53-3.416 3.416-3.416c1.886 0 3.416 1.53 3.416 3.416s-1.53 3.416-3.416 3.416zM24.972 16.396c-1.886 0-3.416-1.53-3.416-3.416s1.53-3.416 3.416-3.416c1.886 0 3.416 1.53 3.416 3.416s-1.53 3.416-3.416 3.416z">
+
+                            </path>
+
+                        </svg>
+
+                        <div>Reels</div>   
+                    </div>
                 <div className={style.formContainer}>
                     <div className={style.inputContainer}>
                         <input className={style.inputField} type='text' value={name} onChange={(e)=>setName(e.target.value)} required/>

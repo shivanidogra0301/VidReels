@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { database } from '../../../../../../firebase'
+import { database } from '../../../../../firebase'
 import style from './Comments.module.css'
 import { CircularProgress } from '@material-ui/core';
 import AddComment from './AddComment';

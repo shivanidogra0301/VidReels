@@ -1,6 +1,6 @@
 import  style from './Main.module.css'
 import React,{useContext,useState,useEffect} from 'react'
-import Home from './Home/Home'
+import Feed from './Feed/Feed'
 import { database } from '../../firebase'
 import { AuthContext } from '../../Context/AuthProvider'
 import Suggestion from './Suggestions/Suggestion'
@@ -27,7 +27,7 @@ const Main = () => {
         {   curUser?
                 <div className={style.Main}>
                     <Menu userData={userData} /> 
-                    <Home userData={userData}/>
+                    <Feed userData={userData}/>
                     <Suggestion/>
                 </div>:
                 <CircularProgress style={{position:'fixed',top:'0',left:'50vh'}}/>

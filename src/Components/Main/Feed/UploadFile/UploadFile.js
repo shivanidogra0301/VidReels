@@ -1,12 +1,10 @@
 import React,{useState} from 'react'
-import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import {v4 as uuidv4} from 'uuid';
-import {storage,database} from '../../../../../firebase'
+import {storage,database} from '../../../../firebase'
 import style from './UploadFile.module.css'
-import { Translate } from '@material-ui/icons';
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',

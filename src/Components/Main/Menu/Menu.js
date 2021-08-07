@@ -8,7 +8,6 @@ import { database,storage } from '../../../firebase';
 import {AuthContext} from '../../../Context/AuthProvider';
 import { useHistory } from 'react-router-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { PostAddOutlined } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
         icons : {
@@ -22,6 +21,7 @@ const Menu = ({userData}) => {
     const{logout,curUser} = useContext(AuthContext)
     const[profilepic,setprofile] = useState(null)
     const[loading,setloading] = useState(false)
+    const[openModal,setModal] = useState(true)
     const classes = useStyles();
     const history = useHistory();
     const logoutHandler = async()=>{
@@ -45,16 +45,18 @@ const Menu = ({userData}) => {
         uploadTaskListener.on('state_changed',fn1,fn2,fn3)
         function fn1(snapshot){
             // console.log(snapshot)
+            setloading(true);
+
             var progress = (snapshot.bytesTransferred/ snapshot.totalBytes) * 100;
             console.log('Upload is ' + progress + '% done');   
             //used to show the progress that this percent is
         }
         function fn2(error){
+            setloading(false)
             console.log("error" + error)
         }
         async function fn3(){
             //download the url
-            setloading(true);
             
             let downloadUrl = await uploadTaskListener.snapshot.ref.getDownloadURL();
             console.log(downloadUrl);
@@ -63,16 +65,32 @@ const Menu = ({userData}) => {
             await database.users.doc(userData.userId).update({
                 profileUrl:downloadUrl
             })
+            let postids = userData.postIds;
+            for(let pid of postids){
+                await database.posts.doc(pid).update({
+                    uProfile: downloadUrl
+                })
 
-            await database.posts.doc()
+
+                
+            }
+            let cmntids = userData.comments;
+            for(let cid of cmntids){
+                await database.comments.doc(cid).update({
+                    uUrl: downloadUrl
+                })
+            }
+            
             setloading(false);
         }
 
     }
-    
-    
+  
     return (
-        <div className={style.MenuContainer}>
+
+
+           
+            <div className={style.MenuContainer}>
             <div className={style.Logo}>
                 <svg className={style.icon} viewBox="0 0 32 32">
         
@@ -123,6 +141,9 @@ const Menu = ({userData}) => {
 
 
         </div>
+       
+        
+       
     )
 }
 

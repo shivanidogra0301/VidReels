@@ -123,6 +123,9 @@ html{
     transform: translate(-3%,-30%);
     margin-top: 2rem;
 }
+.btn:hover{
+    cursor: pointer;
+}
 .videoContainer{
     height: 100%;
     width: 40%;

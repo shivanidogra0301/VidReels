@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import {database} from '../../../../../../firebase'
+import {database} from '../../../../../firebase'
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import {makeStyles} from '@material-ui/core/styles';
 import style from './Like.module.css'

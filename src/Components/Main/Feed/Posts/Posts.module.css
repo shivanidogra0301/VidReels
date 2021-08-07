@@ -6,6 +6,7 @@
     align-items: center;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
+    width: 90%;
     
 }
 
@@ -20,7 +21,6 @@
   }
 .videoModal{
     height: 55rem;
-    width: 48rem;
     border: 1.5px solid #d6e5f2;
     display: flex;
     flex-direction: column;
@@ -80,7 +80,6 @@
     height: 4rem;
     margin-right: 0.8rem;
 }
-.postIcons{
-    
-}
+
+
 

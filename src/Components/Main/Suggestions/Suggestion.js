@@ -10,17 +10,17 @@ const Suggestion = () => {
             </div>
             <div className={style.profileContainer}>
                 <img className={style.imageContainer+" " + style.items} src = {src}/>
-                <h2 className={style.items}>Shivani</h2>
+                <h2 className={style.items}>Monica Geller</h2>
                 <div  className={ style.followbtn}>Follow</div>
             </div>
             <div className={style.profileContainer}>
                 <img className={style.imageContainer+" " + style.items} src = {src}/>
-                <h2 className={style.items}>Shivani</h2>
+                <h2 className={style.items}>Rachel Greene</h2>
                 <div  className={ style.followbtn}>Follow</div>
             </div>
             <div className={style.profileContainer}>
                 <img className={style.imageContainer+" " + style.items} src = {src}/>
-                <h2 className={style.items}>Shivani</h2>
+                <h2 className={style.items}>Phoebe Buffay</h2>
                 <div  className={ style.followbtn}>Follow</div>
             </div>
         </div>

@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-NOTE: Currently working on new features , so not hosted the website.
+
 
 ScreenShots 
 <img src ="https://github.com/shivanidogra0301/VidReels/blob/master/src/Images/ScreenShots/ss1.PNG">

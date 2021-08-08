@@ -1,6 +1,7 @@
-##VidReels
+## VidReels
 Built a social media website named VidReels in which user can post videos, like them and post comment in it.
 The backend and storage is managed by firebase. Learnt new unique way to style websites.
+Live Server : https://reels-cd094.web.app/
 
 # Getting Started with Create React App
 
